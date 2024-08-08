@@ -23,9 +23,11 @@ const Converter = () => {
     //     }
     // };
 
+    const keyboardButton = 'w-full h-full aspect-square font-bold text-2xl rounded-2xl flex items-center justify-center bg-stone-100 hover:bg-stone-200'
+
     return (
         <div className='flex items-start justify-between w-full p-5'>
-            <div className='w-[300px] p-10 flex flex-col'>
+            <div className='w-fit p-10 flex flex-col'>
                 <div className='flex items-center'>
                     <select
                         value={fromCurrency}
@@ -60,8 +62,43 @@ const Converter = () => {
                 </div>
 
             </div>
-            <div className='flex-1 p-10'>
-
+            <div className='flex-1 p-10 grid grid-cols-4 gap-2 w-full max-w-[600px]'>
+                <button className={keyboardButton}>
+                    1
+                </button>
+                <button className={keyboardButton}>
+                    1
+                </button>
+                <button className={keyboardButton}>
+                    1
+                </button>
+                <button className={keyboardButton}>
+                    1
+                </button>
+                <button className={keyboardButton}>
+                    1
+                </button>
+                <button className={keyboardButton}>
+                    1
+                </button>
+                <button className={keyboardButton}>
+                    1
+                </button>
+                <button className={keyboardButton}>
+                    1
+                </button>
+                <button className={keyboardButton}>
+                    1
+                </button>
+                <button className={keyboardButton}>
+                    1
+                </button>
+                <button className={keyboardButton}>
+                    1
+                </button>
+                <button className={'/w-full h-full aspect-square font-bold text-2xl rounded-2xl flex items-center justify-center bg-gradient-to-br from-main-color to-main-color-light text-white'}>
+                    1
+                </button>
             </div>
         </div>
 
