@@ -25,7 +25,8 @@ const Converter = () => {
     };
 
     return (
-        <div>
+        <div className='flex items-start justify-between w-full'>
+         <div>
             <input
                 type="number"
                 value={amount}
@@ -57,6 +58,8 @@ const Converter = () => {
             </select>
 
         </div>
+        </div>
+       
     );
 };
 
