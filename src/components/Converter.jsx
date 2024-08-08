@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import { IoCaretDown, IoCopy, IoSwapVerticalOutline } from 'react-icons/io5';
+import { IoCaretDown, IoCheckmarkCircleSharp, IoCopy, IoSwapVerticalOutline } from 'react-icons/io5';
 import Navbar from './Navbar';
 import debounce from 'lodash.debounce'; // Import lodash.debounce
 
@@ -10,6 +10,7 @@ const Converter = () => {
     const [toCurrency, setToCurrency] = useState('EUR');
     const [amount, setAmount] = useState(1);
     const [result, setResult] = useState(0);
+    const [copied, setCopied] = useState(false)
 
     const fetchRates = useCallback(debounce(async (currency) => {
         try {
@@ -41,15 +42,15 @@ const Converter = () => {
 
     const withCommas = (num) => {
         if (isNaN(num)) return '';
-    
+
         // Ensure num is a number with 2 decimal places
         const formattedNum = Number(num).toFixed(2);
         const [integerPart, decimalPart] = formattedNum.split('.');
         const formattedIntegerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    
+
         return `${formattedIntegerPart}.${decimalPart}`;
     };
-    
+
 
     const handleSwap = () => {
         setFromCurrency(prevFromCurrency => {
@@ -64,6 +65,16 @@ const Converter = () => {
         const value = parseFloat(e.target.value);
         // If the value is NaN, set amount to 0
         setAmount(isNaN(value) ? 0 : value);
+    };
+
+    const copyToClipboard = () => {
+        navigator.clipboard.writeText(withCommas(result) + ' ' + toCurrency)
+            .then(() => {
+                setCopied(true)
+                setTimeout(() => {
+                    setCopied(false)
+                }, 1200);
+            })
     };
 
     return (
@@ -101,9 +112,16 @@ const Converter = () => {
                                 value={withCommas(result)}
                                 className='w-[250px] h-[60px] rounded-2xl px-5 bg-main-color text-white font-extrabold cursor-default'
                             />
-                            <button className=' absolute top-0 bottom-0 my-auto right-4 text-white text-xl transition duration-150 opacity-0 group-hover:opacity-100' title='Copy to clipboard'>
-                                <IoCopy />
-                            </button>
+                            
+                            {copied ?
+                                    <button onClick={copyToClipboard} className=' absolute top-0 bottom-0 my-auto right-4 text-white text-2xl transition duration-150 opacity-0 group-hover:opacity-100' title='Copied'>
+                                        <IoCheckmarkCircleSharp />
+                                    </button>
+                                    :
+                                    <button onClick={copyToClipboard} className=' absolute top-0 bottom-0 my-auto right-4 text-white text-xl transition duration-150 opacity-0 group-hover:opacity-100' title='Copy to clipboard'>
+                                        <IoCopy />
+                                    </button>
+                                }
                         </div>
                     </div>
                 </div>
