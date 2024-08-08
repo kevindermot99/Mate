@@ -8,22 +8,23 @@ const Converter = () => {
     const [fromCurrency, setFromCurrency] = useState('USD');
     const [toCurrency, setToCurrency] = useState('EUR');
     const [amount, setAmount] = useState(1);
-    const [result, setResult] = useState(420483);
+    const [amountWithNoCommas, setAmountWithNoCommas] = useState(0)
+    const [result, setResult] = useState(0);
 
-    // useEffect(() => {
-    //     axios.get(`https://v6.exchangerate-api.com/v6/11ba1ec567299a9cdd244247/latest/${fromCurrency}`)
-    //         .then(response => {
-    //             setRates(response.data.conversion_rates);
-    //             convertCurrency(amount, response.data.conversion_rates);
-    //         });
-    // }, [fromCurrency, toCurrency, amount]);
+    useEffect(() => {
+        axios.get(`https://v6.exchangerate-api.com/v6/11ba1ec567299a9cdd244247/latest/${fromCurrency}`)
+            .then(response => {
+                setRates(response.data.conversion_rates);
+                convertCurrency(amount, response.data.conversion_rates);
+            });
+    }, [fromCurrency, toCurrency, amount]);
 
-    // const convertCurrency = (amount, rates) => {
-    //     if (rates && toCurrency) {
-    //         const conversionRate = rates[toCurrency];
-    //         setResult(amount * conversionRate);
-    //     }
-    // };
+    const convertCurrency = (amount, rates) => {
+        if (rates && toCurrency) {
+            const conversionRate = rates[toCurrency];
+            setResult(amount * conversionRate);
+        }
+    };
 
     function withCommas(num) {
         // Convert the number to a string and split into integer and decimal parts
@@ -37,20 +38,6 @@ const Converter = () => {
 
     }
 
-    const formatNumber = (num) => {
-        // Remove non-digit characters except the decimal point
-        const cleanValue = num.replace(/[^\d]/g, '');
-        // Format the number with commas
-        return cleanValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-      };
-    
-      const handleChange = (e) => {
-        const inputValue = e.target.value;
-        // Remove any formatting for internal processing
-        const cleanValue = inputValue.replace(/,/g, '');
-        // Format and set the value
-        setAmount(formatNumber(cleanValue));
-      };
 
     return (
         <div className='w-full h-svh flex flex-col items-start justify-start relative'>
@@ -72,16 +59,16 @@ const Converter = () => {
                                 <IoCaretDown className='opacity-30' />
                             </div>
                             <input
-                                type="text"
+                                type="number"
                                 value={amount}
                                 autoFocus
-                                onChange={handleChange}
+                                onChange={(e) => setAmount(e.target.value)}
                                 className='w-[250px] h-[60px] rounded-2xl px-5 bg-white ring-1 ring-stone-200 tracking-wider'
                             />
                         </div>
                         <div className='absolute top-0 bottom-0 left-[-40px] my-auto bg-stone-100 h-[40px] w-auto aspect-square rounded-full p-1 flex items-center justify-center cursor-pointer transition duration-100 active:scale-90 select-none ' title='Swap fields'>
                             <span className='h-full w-full bg-white flex items-center justify-center p-1 rounded-full ring-1 ring-stone-200'>
-                                <IoSwapVerticalOutline className='text-xl'/>
+                                <IoSwapVerticalOutline className='text-xl' />
                             </span>
                         </div>
                         <div className='flex items-center justify-center gap-2 w-full relative group'>
