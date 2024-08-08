@@ -14,7 +14,7 @@ const Converter = () => {
 
     const fetchRates = useCallback(debounce(async (currency) => {
         try {
-            const response = await axios.get(`https://v6.exchangerate-api.com/v6/11ba1ec567299a9cdd244247/latest/${currency}`);
+            // const response = await axios.get(`https://v6.exchangerate-api.com/v6/11ba1ec567299a9cdd244247/latest/${currency}`);
             setRates(response.data.conversion_rates);
         } catch (error) {
             console.error('Error fetching rates:', error);
@@ -79,9 +79,9 @@ const Converter = () => {
 
     return (
         <div className='w-full h-svh flex flex-col items-start justify-start relative'>
-            <div className='w-full h-fit flex flex-col bg-stone-100'>
+            <div className='w-full h-fit flex flex-col bg-stone-100 '>
                 <Navbar />
-                <div className=' flex items-center justify-center pt-16 bg-red'>
+                <div className=' flex items-center justify-center pt-24 bg-red '>
                     <div className=' flex flex-col w-fit gap-2 relative'>
                         <div className='flex items-center justify-center gap-2 w-full'>
                             <div className='w-[80px] h-[60px] bg-white rounded-2xl select-none ring-1 ring-stone-200 flex items-center justify-center text-sm font-extrabold gap-1 pl-1 cursor-pointer'>
@@ -93,7 +93,7 @@ const Converter = () => {
                                 value={amount}
                                 autoFocus
                                 onChange={handleAmountChange}
-                                className='w-[250px] h-[60px] rounded-2xl px-5 bg-white ring-1 ring-stone-200 tracking-wider'
+                                className='w-[270px] h-[60px] rounded-2xl px-5 bg-white ring-1 ring-stone-200 tracking-wider'
                             />
                         </div>
                         <div onClick={handleSwap} className='absolute top-0 bottom-0 left-[-40px] my-auto bg-stone-100 h-[40px] w-auto aspect-square rounded-full p-1 flex items-center justify-center cursor-pointer transition duration-100 active:scale-90 select-none ' title='Swap fields'>
@@ -110,25 +110,28 @@ const Converter = () => {
                                 type="text"
                                 readOnly
                                 value={withCommas(result)}
-                                className='w-[250px] h-[60px] rounded-2xl px-5 bg-main-color text-white font-extrabold cursor-default'
+                                className='w-[270px] h-[60px] rounded-2xl px-5 bg-main-color text-white font-extrabold cursor-default'
                             />
                             
                             {copied ?
-                                    <button onClick={copyToClipboard} className=' absolute top-0 bottom-0 my-auto right-4 text-white text-2xl transition duration-150 opacity-0 group-hover:opacity-100' title='Copied'>
+                                    <button onClick={copyToClipboard} className=' absolute top-0 bottom-0 my-auto right-4 text-white text-2xl opacity-0 group-hover:opacity-100' title='Copied'>
                                         <IoCheckmarkCircleSharp />
                                     </button>
                                     :
-                                    <button onClick={copyToClipboard} className=' absolute top-0 bottom-0 my-auto right-4 text-white text-xl transition duration-150 opacity-0 group-hover:opacity-100' title='Copy to clipboard'>
+                                    <button onClick={copyToClipboard} className=' absolute top-0 bottom-0 my-auto right-4 text-white text-xl opacity-0 group-hover:opacity-100' title='Copy to clipboard'>
                                         <IoCopy />
                                     </button>
                                 }
                         </div>
                     </div>
                 </div>
-                <p className='w-full text-xs text-center py-5 opacity-75 tracking-wide'>Please wait while we process your calculation</p>
+                <p className='w-full text-sm text-center py-5 opacity-75 tracking-wide'>Quick, reliable, and spot-on currency converter</p>
             </div>
             <div className='flex-1 flex items-start justify-between w-full mx-auto p-5'>
-
+                <h1 className='font-medium text-base'>Currency Picker</h1>
+                <div className='py-5 gridRespo'>
+                    <div className=''></div>
+                </div>
             </div>
         </div>
     );
