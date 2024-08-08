@@ -8,7 +8,7 @@ export default {
       colors: {
         "main-color": "#fe5707",
         "main-color-light":"#FBAC1D",
-        "light-body": "#faf5f0",
+        "light-body": "#fcfcfc",
         "dark-body-color":"#090a0a",
         "dark-inactive-container":"#0F1010",
         "dark-active-container":"#191919",
