@@ -25,12 +25,10 @@ const Converter = () => {
     //     }
     // };
 
-    const keyboardButton = 'w-full h-full aspect-square font-bold text-2xl rounded-2xl flex items-center justify-center bg-stone-100 hover:bg-stone-200'
-
     return (
-        <div className='w-full h-svh flex flex-col justify-center relative'>
-            <Navbar />
-            <div className='flex items-start justify-between w-full max-w-[900px] mx-auto p-5'>
+        <div className='w-full h-svh flex justify-center relative'>
+            <div className='w-[350px]'>
+                <Navbar />
                 <div className='w-fit p-10 flex flex-col'>
                     <div className='flex items-center'>
                         <select
@@ -66,44 +64,9 @@ const Converter = () => {
                     </div>
 
                 </div>
-                <div className='flex-1 p-10 grid grid-cols-4 gap-2 w-full max-w-[550px]'>
-                    <button className={keyboardButton}>
-                        1
-                    </button>
-                    <button className={keyboardButton}>
-                        1
-                    </button>
-                    <button className={keyboardButton}>
-                        1
-                    </button>
-                    <button className={keyboardButton}>
-                        1
-                    </button>
-                    <button className={keyboardButton}>
-                        1
-                    </button>
-                    <button className={keyboardButton}>
-                        1
-                    </button>
-                    <button className={keyboardButton}>
-                        1
-                    </button>
-                    <button className={keyboardButton}>
-                        1
-                    </button>
-                    <button className={keyboardButton}>
-                        1
-                    </button>
-                    <button className={keyboardButton}>
-                        1
-                    </button>
-                    <button className={keyboardButton}>
-                        1
-                    </button>
-                    <button className={'/w-full h-full aspect-square font-bold text-3xl rounded-2xl flex items-center justify-center bg-gradient-to-br from-main-color to-main-color-light text-white'}>
-                        <IoCopy />
-                    </button>
-                </div>
+            </div>
+            <div className='flex-1 flex items-start justify-between w-full mx-auto p-5'>
+                
             </div>
         </div>
 
