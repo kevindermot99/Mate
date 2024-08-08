@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { IoCopy } from 'react-icons/io5';
+import Navbar from './Navbar';
 
 const Converter = () => {
     const [rates, setRates] = useState({});
@@ -26,81 +28,85 @@ const Converter = () => {
     const keyboardButton = 'w-full h-full aspect-square font-bold text-2xl rounded-2xl flex items-center justify-center bg-stone-100 hover:bg-stone-200'
 
     return (
-        <div className='flex items-start justify-between w-full p-5'>
-            <div className='w-fit p-10 flex flex-col'>
-                <div className='flex items-center'>
-                    <select
-                        value={fromCurrency}
-                        onChange={(e) => setFromCurrency(e.target.value)}
-                    >
-                        {/* Add more currency options as needed */}
-                        <option value="USD">USD</option>
-                        <option value="EUR">EUR</option>
-                        <option value="GBP">GBP</option>
-                    </select>
-                    <input
-                        type="number"
-                        value={amount}
-                        onChange={(e) => setAmount(e.target.value)}
-                    />
-                </div>
-                <div className='flex items-center'>
-                    <select
-                        value={toCurrency}
-                        onChange={(e) => setToCurrency(e.target.value)}
-                    >
-                        {/* Add more currency options as needed */}
-                        <option value="USD">USD</option>
-                        <option value="EUR">EUR</option>
-                        <option value="GBP">GBP</option>
-                    </select>
-                    <input
-                        readOnly
-                        type="number"
-                        value={result}
-                    />
-                </div>
+        <div className='w-full h-svh flex flex-col justify-center relative'>
+            <Navbar />
+            <div className='flex items-start justify-between w-full max-w-[900px] mx-auto p-5'>
+                <div className='w-fit p-10 flex flex-col'>
+                    <div className='flex items-center'>
+                        <select
+                            value={fromCurrency}
+                            onChange={(e) => setFromCurrency(e.target.value)}
+                        >
+                            {/* Add more currency options as needed */}
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                        </select>
+                        <input
+                            type="number"
+                            value={amount}
+                            onChange={(e) => setAmount(e.target.value)}
+                        />
+                    </div>
+                    <div className='flex items-center'>
+                        <select
+                            value={toCurrency}
+                            onChange={(e) => setToCurrency(e.target.value)}
+                        >
+                            {/* Add more currency options as needed */}
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                        </select>
+                        <input
+                            readOnly
+                            type="number"
+                            value={result}
+                        />
+                    </div>
 
-            </div>
-            <div className='flex-1 p-10 grid grid-cols-4 gap-2 w-full max-w-[600px]'>
-                <button className={keyboardButton}>
-                    1
-                </button>
-                <button className={keyboardButton}>
-                    1
-                </button>
-                <button className={keyboardButton}>
-                    1
-                </button>
-                <button className={keyboardButton}>
-                    1
-                </button>
-                <button className={keyboardButton}>
-                    1
-                </button>
-                <button className={keyboardButton}>
-                    1
-                </button>
-                <button className={keyboardButton}>
-                    1
-                </button>
-                <button className={keyboardButton}>
-                    1
-                </button>
-                <button className={keyboardButton}>
-                    1
-                </button>
-                <button className={keyboardButton}>
-                    1
-                </button>
-                <button className={keyboardButton}>
-                    1
-                </button>
-                <button className={'/w-full h-full aspect-square font-bold text-2xl rounded-2xl flex items-center justify-center bg-gradient-to-br from-main-color to-main-color-light text-white'}>
-                    1
-                </button>
+                </div>
+                <div className='flex-1 p-10 grid grid-cols-4 gap-2 w-full max-w-[550px]'>
+                    <button className={keyboardButton}>
+                        1
+                    </button>
+                    <button className={keyboardButton}>
+                        1
+                    </button>
+                    <button className={keyboardButton}>
+                        1
+                    </button>
+                    <button className={keyboardButton}>
+                        1
+                    </button>
+                    <button className={keyboardButton}>
+                        1
+                    </button>
+                    <button className={keyboardButton}>
+                        1
+                    </button>
+                    <button className={keyboardButton}>
+                        1
+                    </button>
+                    <button className={keyboardButton}>
+                        1
+                    </button>
+                    <button className={keyboardButton}>
+                        1
+                    </button>
+                    <button className={keyboardButton}>
+                        1
+                    </button>
+                    <button className={keyboardButton}>
+                        1
+                    </button>
+                    <button className={'/w-full h-full aspect-square font-bold text-3xl rounded-2xl flex items-center justify-center bg-gradient-to-br from-main-color to-main-color-light text-white'}>
+                        <IoCopy />
+                    </button>
+                </div>
             </div>
         </div>
+
 
     );
 };
