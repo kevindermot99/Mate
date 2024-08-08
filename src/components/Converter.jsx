@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { IoCopy } from 'react-icons/io5';
+import { IoCaretDown, IoCopy, IoSwapVerticalOutline } from 'react-icons/io5';
 import Navbar from './Navbar';
 
 const Converter = () => {
@@ -37,13 +37,28 @@ const Converter = () => {
 
     }
 
+    const formatNumber = (num) => {
+        // Remove non-digit characters except the decimal point
+        const cleanValue = num.replace(/[^\d]/g, '');
+        // Format the number with commas
+        return cleanValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      };
+    
+      const handleChange = (e) => {
+        const inputValue = e.target.value;
+        // Remove any formatting for internal processing
+        const cleanValue = inputValue.replace(/,/g, '');
+        // Format and set the value
+        setAmount(formatNumber(cleanValue));
+      };
+
     return (
-        <div className='w-full h-svh flex justify-center relative'>
-            <div className='w-[300px] bg-stone-100 h-full flex flex-col'>
+        <div className='w-full h-svh flex flex-col items-start justify-start relative'>
+            <div className='w-full h-fit flex flex-col bg-stone-100'>
                 <Navbar />
-                <div className='flex-1 flex items-start'>
-                    <div className='w-fit px-5 flex flex-col gap-2 py-2'>
-                        <div className='flex items-center gap-2'>
+                <div className=' flex items-center justify-center pt-16 bg-red'>
+                    <div className=' flex flex-col w-fit gap-2 relative'>
+                        <div className='flex items-center justify-center gap-2 w-full'>
                             {/* <select
                             value={fromCurrency}
                             onChange={(e) => setFromCurrency(e.target.value)}
@@ -52,23 +67,49 @@ const Converter = () => {
                             <option value="EUR">EUR</option>
                             <option value="GBP">GBP</option>
                         </select> */}
-                            <div className='w-full max-w-fit px-2'>{fromCurrency}</div>
+                            <div className='w-[80px] h-[60px] bg-white rounded-2xl select-none ring-1 ring-stone-200 flex items-center justify-center text-sm font-extrabold gap-1 pl-1 cursor-pointer'>
+                                <span>{fromCurrency}</span>
+                                <IoCaretDown className='opacity-30' />
+                            </div>
                             <input
                                 type="text"
                                 value={amount}
-                                onChange={(e) => setAmount(e.target.value)}
-                                className='w-full h-[40px] rounded-md text-right px-3'
+                                autoFocus
+                                onChange={handleChange}
+                                className='w-[250px] h-[60px] rounded-2xl px-5 bg-white ring-1 ring-stone-200 tracking-wider'
                             />
                         </div>
-                        <h1 className='w-full h-fit text-end text-xl pt-3 font-bold text-main-color tracking-wider'>{withCommas(result)} <span className='text-base'>{toCurrency}</span></h1>
-                        <button className='w-full h-fit text-xs text-end'>
-                            Swap Currencies
-                        </button>
-
-
+                        <div className='absolute top-0 bottom-0 left-[-40px] my-auto bg-stone-100 h-[40px] w-auto aspect-square rounded-full p-1 flex items-center justify-center cursor-pointer transition duration-100 active:scale-90 select-none ' title='Swap fields'>
+                            <span className='h-full w-full bg-white flex items-center justify-center p-1 rounded-full ring-1 ring-stone-200'>
+                                <IoSwapVerticalOutline className='text-xl'/>
+                            </span>
+                        </div>
+                        <div className='flex items-center justify-center gap-2 w-full relative group'>
+                            {/* <select
+                            value={fromCurrency}
+                            onChange={(e) => setFromCurrency(e.target.value)}
+                        >
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                        </select> */}
+                            <div className='w-[80px] h-[60px] bg-main-color select-none text-white rounded-2xl tracking-wider flex items-center justify-center text-sm font-extrabold gap-1 pl-1 cursor-pointer'>
+                                <span>{toCurrency}</span>
+                                <IoCaretDown className='opacity-100' />
+                            </div>
+                            <input
+                                type="text"
+                                readOnly
+                                value={withCommas(result)}
+                                className='w-[250px] h-[60px] rounded-2xl px-5 bg-main-color text-white font-extrabold cursor-default'
+                            />
+                            <button className=' absolute top-0 bottom-0 my-auto right-4 text-white text-xl transition duration-150 opacity-0 group-hover:opacity-100' title='Copy to clipboard'>
+                                <IoCopy />
+                            </button>
+                        </div>
                     </div>
                 </div>
-
+                <p className='w-full text-xs text-center py-5 opacity-75 tracking-wide'>Please wait while we process your calculation</p>
             </div>
             <div className='flex-1 flex items-start justify-between w-full mx-auto p-5'>
 

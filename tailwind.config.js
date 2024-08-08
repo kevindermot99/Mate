@@ -6,7 +6,7 @@ export default {
       fontFamily: {
       },
       colors: {
-        "main-color": "#fe5707",
+        "main-color": "#FC7737",
         "main-color-light":"#FBAC1D",
         "light-body": "#fcfcfc",
         "dark-body-color":"#090a0a",
