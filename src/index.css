@@ -1,21 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-*{
-    font-family: 'Fustat';
-    outline: none;
+* {
+  font-family: "Fustat";
+  outline: none;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
-    -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
-input[type=number] {
-    -moz-appearance:textfield; /* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+.gridRespo {
+  /* max-width: 1300px; */
+  width: 100%;
+  margin: auto;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+@media only screen and (max-width: 800px) {
+  .gridRespo {
+    /* max-width: 1000px; */
+    width: 100%;
+    margin: auto;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(1fr, 1fr));
+  }
+}
+
+@media only screen and (max-width: 410px) {
+  .gridRespo {
+    /* max-width: 1000px; */
+    width: 100%;
+    margin: auto;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(1fr, 1fr));
+  }
 }
