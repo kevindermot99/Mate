@@ -26,7 +26,7 @@ const Converter = () => {
 
     return (
         <div className='flex items-start justify-between w-full p-5'>
-            <div className='w-[300px] p-10'>
+            <div className='w-[300px] p-10 flex flex-col'>
                 <div className='flex items-center'>
                     <input
                         type="number"
