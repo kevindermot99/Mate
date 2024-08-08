@@ -1,43 +1,70 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { IoCaretDown, IoCopy, IoSwapVerticalOutline } from 'react-icons/io5';
 import Navbar from './Navbar';
+import debounce from 'lodash.debounce'; // Import lodash.debounce
 
 const Converter = () => {
     const [rates, setRates] = useState({});
     const [fromCurrency, setFromCurrency] = useState('USD');
     const [toCurrency, setToCurrency] = useState('EUR');
     const [amount, setAmount] = useState(1);
-    const [amountWithNoCommas, setAmountWithNoCommas] = useState(0)
     const [result, setResult] = useState(0);
 
+    const fetchRates = useCallback(debounce(async (currency) => {
+        try {
+            const response = await axios.get(`https://v6.exchangerate-api.com/v6/11ba1ec567299a9cdd244247/latest/${currency}`);
+            setRates(response.data.conversion_rates);
+        } catch (error) {
+            console.error('Error fetching rates:', error);
+        }
+    }, 500), []);
+
     useEffect(() => {
-        axios.get(`https://v6.exchangerate-api.com/v6/11ba1ec567299a9cdd244247/latest/${fromCurrency}`)
-            .then(response => {
-                setRates(response.data.conversion_rates);
-                convertCurrency(amount, response.data.conversion_rates);
-            });
-    }, [fromCurrency, toCurrency, amount]);
+        fetchRates(fromCurrency);
+    }, [fromCurrency, fetchRates]);
+
+    useEffect(() => {
+        if (rates && toCurrency) {
+            convertCurrency(amount, rates);
+        }
+    }, [amount, rates, toCurrency]);
 
     const convertCurrency = (amount, rates) => {
-        if (rates && toCurrency) {
-            const conversionRate = rates[toCurrency];
-            setResult(amount * conversionRate);
+        const conversionRate = rates[toCurrency];
+        if (conversionRate) {
+            // Format the result with 2 decimal places
+            const formattedResult = (amount * conversionRate).toFixed(2);
+            setResult(parseFloat(formattedResult)); // Convert back to number
         }
     };
 
-    function withCommas(num) {
-        // Convert the number to a string and split into integer and decimal parts
-        const [integerPart, decimalPart] = num.toString().split('.');
-
-        // Add commas to the integer part
+    const withCommas = (num) => {
+        if (isNaN(num)) return '';
+    
+        // Ensure num is a number with 2 decimal places
+        const formattedNum = Number(num).toFixed(2);
+        const [integerPart, decimalPart] = formattedNum.split('.');
         const formattedIntegerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    
+        return `${formattedIntegerPart}.${decimalPart}`;
+    };
+    
 
-        // Rejoin integer and decimal parts, if present
-        return decimalPart ? `${formattedIntegerPart}.${decimalPart}` : formattedIntegerPart;
+    const handleSwap = () => {
+        setFromCurrency(prevFromCurrency => {
+            const newToCurrency = toCurrency;
+            setToCurrency(prevFromCurrency);
+            return newToCurrency;
+        });
+    };
 
-    }
-
+    const handleAmountChange = (e) => {
+        // Use parseFloat to ensure the value is a number
+        const value = parseFloat(e.target.value);
+        // If the value is NaN, set amount to 0
+        setAmount(isNaN(value) ? 0 : value);
+    };
 
     return (
         <div className='w-full h-svh flex flex-col items-start justify-start relative'>
@@ -46,40 +73,24 @@ const Converter = () => {
                 <div className=' flex items-center justify-center pt-16 bg-red'>
                     <div className=' flex flex-col w-fit gap-2 relative'>
                         <div className='flex items-center justify-center gap-2 w-full'>
-                            {/* <select
-                            value={fromCurrency}
-                            onChange={(e) => setFromCurrency(e.target.value)}
-                        >
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
-                            <option value="GBP">GBP</option>
-                        </select> */}
                             <div className='w-[80px] h-[60px] bg-white rounded-2xl select-none ring-1 ring-stone-200 flex items-center justify-center text-sm font-extrabold gap-1 pl-1 cursor-pointer'>
                                 <span>{fromCurrency}</span>
                                 <IoCaretDown className='opacity-30' />
                             </div>
                             <input
-                                type="number"
+                                type="text"
                                 value={amount}
                                 autoFocus
-                                onChange={(e) => setAmount(e.target.value)}
+                                onChange={handleAmountChange}
                                 className='w-[250px] h-[60px] rounded-2xl px-5 bg-white ring-1 ring-stone-200 tracking-wider'
                             />
                         </div>
-                        <div className='absolute top-0 bottom-0 left-[-40px] my-auto bg-stone-100 h-[40px] w-auto aspect-square rounded-full p-1 flex items-center justify-center cursor-pointer transition duration-100 active:scale-90 select-none ' title='Swap fields'>
+                        <div onClick={handleSwap} className='absolute top-0 bottom-0 left-[-40px] my-auto bg-stone-100 h-[40px] w-auto aspect-square rounded-full p-1 flex items-center justify-center cursor-pointer transition duration-100 active:scale-90 select-none ' title='Swap fields'>
                             <span className='h-full w-full bg-white flex items-center justify-center p-1 rounded-full ring-1 ring-stone-200'>
                                 <IoSwapVerticalOutline className='text-xl' />
                             </span>
                         </div>
                         <div className='flex items-center justify-center gap-2 w-full relative group'>
-                            {/* <select
-                            value={fromCurrency}
-                            onChange={(e) => setFromCurrency(e.target.value)}
-                        >
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
-                            <option value="GBP">GBP</option>
-                        </select> */}
                             <div className='w-[80px] h-[60px] bg-main-color select-none text-white rounded-2xl tracking-wider flex items-center justify-center text-sm font-extrabold gap-1 pl-1 cursor-pointer'>
                                 <span>{toCurrency}</span>
                                 <IoCaretDown className='opacity-100' />
@@ -102,8 +113,6 @@ const Converter = () => {
 
             </div>
         </div>
-
-
     );
 };
 
