@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import { IoCaretDown, IoCheckmarkCircleSharp, IoCopy, IoSwapVerticalOutline } from 'react-icons/io5';
+import { IoArrowForward, IoCaretDown, IoCheckmarkCircleSharp, IoCopy, IoSwapVerticalOutline } from 'react-icons/io5';
 import Navbar from './Navbar';
 import debounce from 'lodash.debounce'; // Import lodash.debounce
 
@@ -77,6 +77,8 @@ const Converter = () => {
             })
     };
 
+    const cc = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",]
+
     return (
         <div className='w-full h-svh flex flex-col items-start justify-start relative'>
             <div className='w-full h-fit flex flex-col bg-stone-100 '>
@@ -112,25 +114,38 @@ const Converter = () => {
                                 value={withCommas(result)}
                                 className='w-[270px] h-[60px] rounded-2xl px-5 bg-main-color text-white font-extrabold cursor-default'
                             />
-                            
+
                             {copied ?
-                                    <button onClick={copyToClipboard} className=' absolute top-0 bottom-0 my-auto right-4 text-white text-2xl opacity-0 group-hover:opacity-100' title='Copied'>
-                                        <IoCheckmarkCircleSharp />
-                                    </button>
-                                    :
-                                    <button onClick={copyToClipboard} className=' absolute top-0 bottom-0 my-auto right-4 text-white text-xl opacity-0 group-hover:opacity-100' title='Copy to clipboard'>
-                                        <IoCopy />
-                                    </button>
-                                }
+                                <button onClick={copyToClipboard} className=' absolute top-0 bottom-0 my-auto right-4 text-white text-2xl opacity-0 group-hover:opacity-100' title='Copied'>
+                                    <IoCheckmarkCircleSharp />
+                                </button>
+                                :
+                                <button onClick={copyToClipboard} className=' absolute top-0 bottom-0 my-auto right-4 text-white text-xl opacity-0 group-hover:opacity-100' title='Copy to clipboard'>
+                                    <IoCopy />
+                                </button>
+                            }
                         </div>
                     </div>
                 </div>
                 <p className='w-full text-sm text-center py-5 opacity-75 tracking-wide'>Quick, reliable, and spot-on currency converter</p>
             </div>
-            <div className='flex-1 flex items-start justify-between w-full mx-auto p-5'>
+            <div className='flex-1 flex items-start justify-start flex-col w-full mx-auto p-5'>
                 <h1 className='font-medium text-base'>Currency Picker</h1>
                 <div className='py-5 gridRespo'>
-                    <div className=''></div>
+                    {/* single thing */}
+                    {cc.map((option, index) => (
+                        <div className='flex items-center justify-between max-w-[230px] p-5 rounded-xl'>
+                            <div className='flex flex-col'>
+                                <p className='w-full text-sm opacity-75'>From</p>
+                                <h1 className='text-xl font-bold'>EUR</h1>
+                            </div>
+                            <IoArrowForward className='text-2xl' />
+                            <div className='flex flex-col'>
+                                <p className='w-full text-sm opacity-75'>To</p>
+                                <h1 className='text-xl font-bold'>EUR</h1>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
