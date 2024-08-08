@@ -26,43 +26,46 @@ const Converter = () => {
 
     return (
         <div className='flex items-start justify-between w-full p-5'>
-         <div className='w-[300px] p-10'>
-            <input
-                type="number"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-            />
-            <select
-                value={fromCurrency}
-                onChange={(e) => setFromCurrency(e.target.value)}
-            >
-                {/* Add more currency options as needed */}
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-                <option value="GBP">GBP</option>
-            </select>
-            <br />
-            <input
-                readOnly
-                type="number"
-                value={result}
-            />
-            <select
-                value={toCurrency}
-                onChange={(e) => setToCurrency(e.target.value)}
-            >
-                {/* Add more currency options as needed */}
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-                <option value="GBP">GBP</option>
-            </select>
+            <div className='w-[300px] p-10'>
+                <div className='flex items-center'>
+                    <input
+                        type="number"
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
+                    />
+                    <select
+                        value={fromCurrency}
+                        onChange={(e) => setFromCurrency(e.target.value)}
+                    >
+                        {/* Add more currency options as needed */}
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                    </select>
+                </div>
+                <div className='flex items-center'>
+                    <input
+                        readOnly
+                        type="number"
+                        value={result}
+                    />
+                    <select
+                        value={toCurrency}
+                        onChange={(e) => setToCurrency(e.target.value)}
+                    >
+                        {/* Add more currency options as needed */}
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                    </select>
+                </div>
 
+            </div>
+            <div className='flex-1 p-10'>
+
+            </div>
         </div>
-        <div className='flex-1 p-10'>
-            
-        </div>
-        </div>
-       
+
     );
 };
 
