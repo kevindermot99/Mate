@@ -14,7 +14,7 @@ const Converter = () => {
 
     const fetchRates = useCallback(debounce(async (currency) => {
         try {
-            // const response = await axios.get(`https://v6.exchangerate-api.com/v6/11ba1ec567299a9cdd244247/latest/${currency}`);
+            // const response = await axios.get(``);
             setRates(response.data.conversion_rates);
         } catch (error) {
             console.error('Error fetching rates:', error);
