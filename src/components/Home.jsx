@@ -62,7 +62,7 @@ function Home() {
                     <button className='text-dark-color/50 hover:text-dark-color text-2xl pr-[2px]'>
                         <LuVolume2 />
                     </button>
-                    <button onClick={handleNewQuote} className='text-dark-color text-xl flex items-center gap-1 bg-stone-200/50 hover:bg-stone-200 transition-all h-[37px]  pl-3 pr-4 rounded-lg font-medium group '>
+                    <button onClick={handleNewQuote} className='text-dark-color text-xl flex items-center gap-1 bg-stone-200/50 hover:bg-stone-200 transition-all h-[37px] pl-3 pr-4 rounded-lg font-medium group '>
                         <HiSparkles className='group-hover:rotate-180 transition' />
                         <span className='text-base '>Generate</span>
                     </button>
