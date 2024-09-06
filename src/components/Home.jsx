@@ -5,13 +5,14 @@ import { LuCopy, LuLanguages, LuVolume2 } from 'react-icons/lu'
 import { HiSparkles } from "react-icons/hi2";
 
 function Home() {
-    const [result, setResult] = useState({
-        content: "The past is so much safer, because whatever's in it has already happened. It can't be changed; so, in a way, there's nothing to dread.",
-        originator: {
-            name: "Margaret Atwood",
-        },
-        tags: ["Way", "Change", "Past", "happening", "nothing", "paste"]
-    })
+    const [result, setResult] = useState("")
+    // const [result, setResult] = useState({
+    //     content: "The past is so much safer, because whatever's in it has already happened. It can't be changed; so, in a way, there's nothing to dread.",
+    //     originator: {
+    //         name: "Margaret Atwood",
+    //     },
+    //     tags: ["Way", "Change", "Past", "happening", "nothing", "paste"]
+    // })
     const location = useLocation()
 
     const handleNewQuote = () => {
@@ -40,6 +41,10 @@ function Home() {
 
         getQuote()
     }
+
+    useEffect(() => {
+        handleNewQuote()
+    },[])
 
     return (
         <div className='w-full min-h-svh flex flex-col items-center justify-center text-lg'>
