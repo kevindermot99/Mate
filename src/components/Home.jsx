@@ -8,7 +8,7 @@ function Home() {
         originator: {
             name: "Margaret Atwood",
         },
-        tags: ["Way","Change","Past","happening","nothing","paste"]
+        tags: ["Way", "Change", "Past", "happening", "nothing", "paste"]
     })
     const location = useLocation()
 
@@ -39,19 +39,17 @@ function Home() {
     }, [location.pathname])
 
     return (
-        <div className='w-full min-h-svh flex flex-col items-center justify-center'>
+        <div className='w-full min-h-svh flex flex-col items-center justify-center text-lg'>
             <div className='w-full max-w-[650px]'>
-            <h1 className='font-bold text-4xl tracking-tight'>
-                {result !== "" && result.content}
-            </h1>
-            <p className='pt-4'>
-                &mdash; &nbsp;{result !== "" && result.originator.name}
-            </p>
-            <div className='flex gap-2 pt-4'>
-                {result !== "" && result.tags.map((tag, index) => (
-                 <span key={index} className='text-sm bg-stone-100 px-3 py-1 rounded-xl'>{tag}</span>   
-                ))}
-            </div>
+                <h1 className='font-bold text-4xl tracking-tight'>
+                    ❝ {result !== "" && result.content} ❞
+                </h1>
+                <p className='pt-4'>
+                    &mdash; &nbsp;{result !== "" && result.originator.name}
+                </p>
+                <div className='flex items-center justify-end gap-2 pt-4'>
+                    
+                </div>
             </div>
         </div>
     )
