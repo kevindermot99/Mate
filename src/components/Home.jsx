@@ -50,15 +50,15 @@ function Home() {
                     &mdash; &nbsp;{result !== "" && result.originator.name}
                 </p>
                 <div className='flex items-center justify-end gap-3 pt-4'>
-                    <button className='text-dark-color/50 hover:text-dark-color text-lg'>
+                    <button className='text-dark-color/50 hover:text-dark-color text-xl'>
                         <LuCopy />
                     </button>
-                    <button className='text-dark-color/50 hover:text-dark-color text-xl'>
+                    <button className='text-dark-color/50 hover:text-dark-color text-2xl pr-[2px]'>
                         <LuVolume2 />
                     </button>
                     <button className='text-dark-color text-xl flex items-center gap-1 bg-stone-200/50 hover:bg-stone-200 transition-all h-[37px]  pl-3 pr-4 rounded-lg font-medium group '>
-                        <HiSparkles />
-                        <span className='text-base '>Generate New</span>
+                        <HiSparkles className='group-hover:rotate-180 transition' />
+                        <span className='text-base '>Generate</span>
                     </button>
                 </div>
             </div>
