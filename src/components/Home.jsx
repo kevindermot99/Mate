@@ -14,7 +14,8 @@ function Home() {
     })
     const location = useLocation()
 
-    useEffect(() => {
+    const handleNewQuote = () => {
+
         const options = {
             method: 'GET',
             url: 'https://quotes15.p.rapidapi.com/quotes/random/',
@@ -29,16 +30,16 @@ function Home() {
 
         const getQuote = async () => {
             try {
-                // const response = await axios.request(options);
+                const response = await axios.request(options);
                 // console.log(response.data);
-                // setResult(response.data)
+                setResult(response.data)
             } catch (error) {
                 // console.error(error);
             }
         }
 
         getQuote()
-    }, [location.pathname])
+    }
 
     return (
         <div className='w-full min-h-svh flex flex-col items-center justify-center text-lg'>
@@ -56,7 +57,7 @@ function Home() {
                     <button className='text-dark-color/50 hover:text-dark-color text-2xl pr-[2px]'>
                         <LuVolume2 />
                     </button>
-                    <button className='text-dark-color text-xl flex items-center gap-1 bg-stone-200/50 hover:bg-stone-200 transition-all h-[37px]  pl-3 pr-4 rounded-lg font-medium group '>
+                    <button onClick={handleNewQuote} className='text-dark-color text-xl flex items-center gap-1 bg-stone-200/50 hover:bg-stone-200 transition-all h-[37px]  pl-3 pr-4 rounded-lg font-medium group '>
                         <HiSparkles className='group-hover:rotate-180 transition' />
                         <span className='text-base '>Generate</span>
                     </button>
