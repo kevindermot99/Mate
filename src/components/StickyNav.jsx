@@ -1,5 +1,5 @@
 import { ConfigProvider, Dropdown, Menu } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { HiMenuAlt4 } from "react-icons/hi";
 import {
   LuChevronDown,
@@ -8,9 +8,11 @@ import {
   LuLaptop2,
   LuMoonStar,
   LuSun,
+  LuX,
 } from "react-icons/lu";
 
 function StickyNav() {
+
   const items = [
     {
       key: "1",
@@ -54,10 +56,8 @@ function StickyNav() {
     {
       key: "4",
       label: (
-        <button
-          className="text-sm font-medium tracking-tight flex items-center justify-start w-full gap-2"
-        >
-            Tools & Tech
+        <button className="text-sm font-medium tracking-tight flex items-center justify-start w-full gap-2">
+          Tools & Tech
         </button>
       ),
     },
@@ -82,7 +82,7 @@ function StickyNav() {
   ];
 
   return (
-    <div className="sticky p-3 right-0 left-0 mx-auto h-[80px] w-fit min-w-[450px] max-md:min-w-full">
+    <div className="sticky p-3 right-0 left-0 mx-auto h-[80px] w-fit min-w-[450px] max-md:min-w-full z-20">
       <div className=" bg-stone-100/60 rounded-full p-3 mb-6 w-full h-full flex items-center justify-between">
         <h1 className="font-bold text-2xl tracking-tight px-4 max-sm:text-lg">
           QuoteMate.
@@ -94,6 +94,7 @@ function StickyNav() {
                 // Seed Token
                 borderRadius: 9,
                 controlItemBgHover: "rgb(231 229 228 / 0.8)",
+                zIndexPopupBase: -30
               },
             }}
           >
