@@ -45,8 +45,12 @@ function Home() {
 
     useEffect(() => {
         const cache = localStorage.getItem('quoteCache') || []
-        setResult(JSON.parse(cache))
-    },[])
+        if (cache.length > 0) {
+            setResult(JSON.parse(cache))
+        } else {
+            
+        }
+    }, [])
 
     return (
         <div className='w-full min-h-svh flex flex-col items-center justify-center text-lg'>
