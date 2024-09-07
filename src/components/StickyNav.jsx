@@ -14,11 +14,34 @@ import {
 function StickyNav() {
 
   const items = [
+    // {
+    //   key: "1",
+    //   label: (
+    //     <button className="text-sm font-medium tracking-tight flex items-center justify-start w-full gap-2">
+    //       Saved Quotes
+    //     </button>
+    //   ),
+    // },
     {
-      key: "1",
+      key: "3",
+      label: (
+        <a
+          href="https://rapidapi.com/martin.svoboda/api/quotes15"
+          target="_blank"
+          className="text-sm font-medium tracking-tight flex flex-col items-start justify-start w-full gap-0"
+          >
+            <span className="text-xs font-normal text-dark-color/70">
+              Credits
+            </span>
+            Rapid API
+          </a>
+      ),
+    },
+    {
+      key: "4",
       label: (
         <button className="text-sm font-medium tracking-tight flex items-center justify-start w-full gap-2">
-          Saved Quotes
+          Tools & Tech
         </button>
       ),
     },
@@ -39,26 +62,6 @@ function StickyNav() {
           </span>
           Kevin K. Mbonimpaye
         </a>
-      ),
-    },
-    {
-      key: "3",
-      label: (
-        <a
-          href="https://rapidapi.com/martin.svoboda/api/quotes15"
-          target="_blank"
-          className="text-sm font-medium tracking-tight flex items-center justify-start w-full gap-2"
-        >
-          Rapid API
-        </a>
-      ),
-    },
-    {
-      key: "4",
-      label: (
-        <button className="text-sm font-medium tracking-tight flex items-center justify-start w-full gap-2">
-          Tools & Tech
-        </button>
       ),
     },
     {
