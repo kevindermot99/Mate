@@ -157,9 +157,7 @@ function Home() {
       <StickyNav />
       <div className="w-full h-full flex-1 flex flex-col items-center justify-center text-lg">
         <div className="w-full max-w-[1080px] pt-10 max-md:pt-0 px-10 relative">
-        <p className="pb-4 text-sm Cascadia text-dark-color/70">
-            quote: 
-          </p>
+          <p className="pb-4 text-sm Cascadia text-dark-color/70">quote:</p>
           <h1 className="font-bold text-4xl max-md:text-2xl tracking-tight">
             {result !== "" && "❝" + result.content + "❞"}
           </h1>
@@ -168,14 +166,30 @@ function Home() {
           </p>
           {animateShowMore && (
             <div className="py-4 ">
-              <l-squircle
-                size="20"
-                stroke="4"
-                stroke-length="0.15"
-                bg-opacity="0.1"
-                speed=".4"
-                color="#333"
-              ></l-squircle>
+              <svg
+                class="container"
+                x="0px"
+                y="0px"
+                viewBox="0 0 20 20"
+                height="20"
+                width="20"
+                preserveAspectRatio="xMidYMid meet"
+              >
+                <path
+                  class="track"
+                  fill="none"
+                  stroke-width="5"
+                  pathLength="100"
+                  d="M0.37 18.5 C0.37 5.772 5.772 0.37 18.5 0.37 S36.63 5.772 36.63 18.5 S31.228 36.63 18.5 36.63 S0.37 31.228 0.37 18.5"
+                ></path>
+                <path
+                  class="car"
+                  fill="none"
+                  stroke-width="5"
+                  pathLength="100"
+                  d="M0.37 18.5 C0.37 5.772 5.772 0.37 18.5 0.37 S36.63 5.772 36.63 18.5 S31.228 36.63 18.5 36.63 S0.37 31.228 0.37 18.5"
+                ></path>
+              </svg>
             </div>
           )}
           {showMore && (
@@ -240,19 +254,35 @@ function Home() {
             `}
             >
               {animateFetch ? (
-                <>
-                  <l-squircle
-                    size="15"
-                    stroke="3"
-                    stroke-length="0.15"
-                    bg-opacity="0.1"
-                    speed=".4"
-                    color="#f0f0f0"
-                  ></l-squircle>
+                <div className="flex items-center gap-3">
+                  <svg
+                    class="container2"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 20 20"
+                    height="20"
+                    width="20"
+                    preserveAspectRatio="xMidYMid meet"
+                  >
+                    <path
+                      class="track"
+                      fill="none"
+                      stroke-width="5"
+                      pathLength="100"
+                      d="M0.37 18.5 C0.37 5.772 5.772 0.37 18.5 0.37 S36.63 5.772 36.63 18.5 S31.228 36.63 18.5 36.63 S0.37 31.228 0.37 18.5"
+                    ></path>
+                    <path
+                      class="car"
+                      fill="none"
+                      stroke-width="5"
+                      pathLength="100"
+                      d="M0.37 18.5 C0.37 5.772 5.772 0.37 18.5 0.37 S36.63 5.772 36.63 18.5 S31.228 36.63 18.5 36.63 S0.37 31.228 0.37 18.5"
+                    ></path>
+                  </svg>
                   <span className="text-sm font-semibold pl-1">
                     Generating..
                   </span>
-                </>
+                </div>
               ) : (
                 <>
                   <HiSparkles className="group-hover:rotate-45 transition duration-200" />
