@@ -62,11 +62,11 @@ function Home() {
                 <p className='pt-4'>
                     {result !== "" && "— " + result.originator.name}
                 </p>
-                <div className='flex items-center justify-end gap-3 pt-4'>
+                <div className='flex items-center justify-end gap-4 pt-4'>
                     <button className='text-dark-color/50 hover:text-dark-color text-xl'>
                         <LuCopy />
                     </button>
-                    <button className='text-dark-color/50 hover:text-dark-color text-2xl pr-[2px]'>
+                    <button className='text-dark-color/50 hover:text-dark-color text-xl pr-[2px]'>
                         <LuBookmark />
                     </button>
                     <button onClick={handleNewQuote} className='text-dark-color text-xl flex items-center gap-1 bg-stone-200/50 hover:bg-stone-200 transition-all h-[37px] pl-3 pr-4 rounded-lg font-medium group '>
