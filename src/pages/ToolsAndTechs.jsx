@@ -19,7 +19,7 @@ function ToolsAndTechs() {
             My goal was to create something quick, reliable, and fun to use,
             giving you and others a motivation to brighten your day.
             <br /> <br />
-            Made with:
+            Simply Made with:
           </p>
           {/* Markup list */}
           <MList
