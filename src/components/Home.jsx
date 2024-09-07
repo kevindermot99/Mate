@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { json, useLocation } from 'react-router-dom'
-import { LuCopy, LuLanguages, LuVolume2 } from 'react-icons/lu'
+import { LuBookmark, LuCopy, LuLanguages, LuVolume2 } from 'react-icons/lu'
 import { HiSparkles } from "react-icons/hi2";
 
 function Home() {
@@ -67,7 +67,7 @@ function Home() {
                         <LuCopy />
                     </button>
                     <button className='text-dark-color/50 hover:text-dark-color text-2xl pr-[2px]'>
-                        <LuVolume2 />
+                        <LuBookmark />
                     </button>
                     <button onClick={handleNewQuote} className='text-dark-color text-xl flex items-center gap-1 bg-stone-200/50 hover:bg-stone-200 transition-all h-[37px] pl-3 pr-4 rounded-lg font-medium group '>
                         <HiSparkles className='group-hover:rotate-180 transition' />
