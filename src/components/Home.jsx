@@ -70,7 +70,7 @@ function Home() {
                         <LuBookmark />
                     </button>
                     <button onClick={handleNewQuote} className='text-dark-color text-xl flex items-center gap-1 bg-stone-200/50 hover:bg-stone-200 transition-all h-[37px] pl-3 pr-4 rounded-lg font-medium group '>
-                        <HiSparkles className='group-hover:rotate-180 transition' />
+                        <HiSparkles className='group-hover:rotate-45 transition duration-200' />
                         <span className='text-base '>Generate</span>
                     </button>
                 </div>
