@@ -3,6 +3,8 @@ import axios from "axios";
 import { json, useLocation } from "react-router-dom";
 import {
   LuBookmark,
+  LuCheck,
+  LuCheckCircle,
   LuChevronDown,
   LuCopy,
   LuGlasses,
@@ -15,12 +17,14 @@ import { ConfigProvider, Dropdown, Space } from "antd";
 import { Tooltip } from "antd";
 import "ldrs/squircle";
 import StickyNav from "../components/StickyNav";
+import { IoCheckmarkCircle } from "react-icons/io5";
 
 function Home() {
   const [result, setResult] = useState("");
   const [showMore, setShowMore] = useState(false);
   const [animateShowMore, setAnimateShowMore] = useState(false);
   const [animateFetch, setAnimateFetch] = useState(false);
+  const [coppied, setCoppied] = useState(false);
 
   const welcomeResult = {
     content: "Simplicity is the ultimate sophistication.",
@@ -73,11 +77,39 @@ function Home() {
     }
   }, []);
 
+  const copyQO = () => {
+    navigator.clipboard.writeText(`❝${result.content}❞`);
+    setCoppied(true);
+    setTimeout(() => {
+      setCoppied(false);
+    }, 900);
+  };
+
+  const copyQAA = () => {
+    navigator.clipboard.writeText(
+      `❝${result.content}❞\n— ${result.originator.name}`
+    );
+    setCoppied(true);
+    setTimeout(() => {
+      setCoppied(false);
+    }, 900);
+  };
+
+  const copyAll = () => {
+    navigator.clipboard.writeText(
+      `❝${result.content}❞\n\n— ${result.originator.name}\n\n${result.originator.description}`
+    );
+    setCoppied(true);
+    setTimeout(() => {
+      setCoppied(false);
+    }, 900);
+  };
+
   const items = [
     {
       key: "1",
       label: (
-        <button className="text-sm font-medium tracking-tight">
+        <button onClick={copyQO} className="text-sm font-medium tracking-tight">
           Copy Quote only
         </button>
       ),
@@ -85,7 +117,10 @@ function Home() {
     {
       key: "2",
       label: (
-        <button className="text-sm font-medium tracking-tight">
+        <button
+          onClick={copyQAA}
+          className="text-sm font-medium tracking-tight"
+        >
           Copy Quote & Author
         </button>
       ),
@@ -93,7 +128,10 @@ function Home() {
     {
       key: "3",
       label: (
-        <button className="text-sm font-medium tracking-tight">
+        <button
+          onClick={copyAll}
+          className="text-sm font-medium tracking-tight"
+        >
           Copy The Whole Thing
         </button>
       ),
@@ -115,8 +153,8 @@ function Home() {
 
   return (
     <div className="flex flex-col h-full min-h-svh w-full">
-    {/* Sticky nav */}
-    <StickyNav />
+      {/* Sticky nav */}
+      <StickyNav />
       <div className="w-full h-full flex-1 flex flex-col items-center justify-center text-lg">
         <div className="w-full max-w-[1080px] pt-10 max-md:pt-0 px-10 relative">
           <h1 className="font-bold text-4xl max-md:text-2xl tracking-tight">
@@ -166,7 +204,7 @@ function Home() {
                 placement="bottomRight"
               >
                 <div className="text-dark-color/50 hover:text-dark-color text-xl flex items-center justify-center gap-[1px] cursor-pointer ring-1 ring-stone-200 h-[37px] rounded-lg pr-1 pl-2">
-                  <LuCopy />
+                  {coppied ? <LuCheck /> : <LuCopy />}
                   <span>
                     <LuChevronDown className="text-sm" />
                   </span>
@@ -213,7 +251,9 @@ function Home() {
                     speed=".4"
                     color="#f0f0f0"
                   ></l-squircle>
-                  <span className="text-sm font-semibold pl-1">Generating..</span>
+                  <span className="text-sm font-semibold pl-1">
+                    Generating..
+                  </span>
                 </>
               ) : (
                 <>
