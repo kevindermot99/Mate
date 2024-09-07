@@ -103,7 +103,7 @@ function Home() {
                         ? result.originator.description
                         : "No description"}
                 </p>
-                <div className="flex items-center justify-end gap-3 py-4 sticky bottom-0 bg-white mt-4">
+                <div className="flex items-center justify-end gap-1 py-4 sticky bottom-0 bg-white mt-4">
                     {/* blender */}
                     <div className="absolute -top-3 left-0 w-full h-3 bg-gradient-to-b from-transparent to-white"></div>
                     <ConfigProvider
@@ -111,7 +111,7 @@ function Home() {
                             token: {
                                 // Seed Token
                                 borderRadius: 6,
-                                controlItemBgHover: "#aaaaaa50"
+                                controlItemBgHover: "rgb(231 229 228 / 0.8)",
                             },
                         }}
                     >
@@ -119,8 +119,10 @@ function Home() {
                             menu={{
                                 items,
                             }}
+                            trigger={['click']}
+                            placement="bottomRight"
                         >
-                            <div className="text-dark-color/50 hover:text-dark-color text-xl flex items-center justify-center gap-1">
+                            <div className="text-dark-color/50 hover:text-dark-color text-xl flex items-center justify-center gap-1 cursor-pointer">
                                 <LuCopy />
                                 <span>
                                     <LuChevronDown />
@@ -128,15 +130,15 @@ function Home() {
                             </div>
                         </Dropdown>
                     </ConfigProvider>
-                    <button className="text-dark-color/50 hover:text-dark-color text-xl pr-[7px]">
+                    <button className="text-dark-color/50 hover:text-dark-color text-xl h-[37px] aspect-square cursor-pointer flex items-center justify-center rounded-lg hover:bg-stone-200/80">
                         <LuBookmark />
                     </button>
-                    <button className="text-dark-color/50 hover:text-dark-color text-xl pr-[7px]">
+                    <button className={`text-dark-color/50 hover:text-dark-color text-xl h-[37px] aspect-square cursor-pointer flex items-center justify-center rounded-lg hover:bg-stone-200/80`}>
                         <LuGlasses />
                     </button>
                     <button
                         onClick={handleNewQuote}
-                        className="text-dark-color text-xl flex items-center select-none gap-1 bg-stone-200/50 hover:bg-stone-200 transition-all h-[37px] pl-3 pr-4 rounded-lg font-medium group "
+                        className="text-dark-color text-xl flex items-center select-none gap-1 bg-stone-200/50 hover:bg-stone-200 transition-all h-[37px] pl-3 pr-4 ml-3 rounded-lg font-medium group "
                     >
                         <HiSparkles className="group-hover:rotate-45 transition duration-200" />
                         <span className="text-base ">Generate</span>
