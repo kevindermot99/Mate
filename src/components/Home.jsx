@@ -6,13 +6,14 @@ import { HiSparkles } from "react-icons/hi2";
 
 function Home() {
     const [result, setResult] = useState("")
-    // const [result, setResult] = useState({
-    //     content: "The past is so much safer, because whatever's in it has already happened. It can't be changed; so, in a way, there's nothing to dread.",
-    //     originator: {
-    //         name: "Margaret Atwood",
-    //     },
-    //     tags: ["Way", "Change", "Past", "happening", "nothing", "paste"]
-    // })
+    const welcomeResult = {
+        content: "Simplicity is the ultimate sophistication.",
+        originator: {
+            name: "Leonardo da Vinci",
+        },
+    };
+
+
     const location = useLocation()
 
     const handleNewQuote = () => {
@@ -48,18 +49,18 @@ function Home() {
         if (cache.length > 0) {
             setResult(JSON.parse(cache))
         } else {
-            
+            setResult(welcomeResult)
         }
     }, [])
 
     return (
         <div className='w-full min-h-svh flex flex-col items-center justify-center text-lg'>
-            <div className='w-full max-w-[650px]'>
+            <div className='w-full max-w-[680px]'>
                 <h1 className='font-bold text-4xl tracking-tight'>
                     {result !== "" && "❝ " + result.content + " ❞"}
                 </h1>
                 <p className='pt-4'>
-                    &mdash; &nbsp;{result !== "" && result.originator.name}
+                    {result !== "" && "— " + result.originator.name}
                 </p>
                 <div className='flex items-center justify-end gap-3 pt-4'>
                     <button className='text-dark-color/50 hover:text-dark-color text-xl'>
