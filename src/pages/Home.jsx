@@ -118,8 +118,8 @@ function Home() {
     {/* Sticky nav */}
     <StickyNav />
       <div className="w-full h-full flex-1 flex flex-col items-center justify-center text-lg">
-        <div className="w-full max-w-[1080px] pt-10 px-10 relative">
-          <h1 className="font-bold text-4xl tracking-tight">
+        <div className="w-full max-w-[1080px] pt-10 max-md:pt-0 px-10 relative">
+          <h1 className="font-bold text-4xl max-md:text-2xl tracking-tight">
             {result !== "" && "❝" + result.content + "❞"}
           </h1>
           <p className="pt-4 Cascadia text-dark-color/90">
