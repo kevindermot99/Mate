@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useLocation } from 'react-router-dom'
+import { json, useLocation } from 'react-router-dom'
 import { LuCopy, LuLanguages, LuVolume2 } from 'react-icons/lu'
 import { HiSparkles } from "react-icons/hi2";
 
@@ -34,6 +34,7 @@ function Home() {
                 const response = await axios.request(options);
                 // console.log(response.data);
                 setResult(response.data)
+                localStorage.setItem('quoteCache', JSON.stringify(response.data))
             } catch (error) {
                 // console.error(error);
             }
@@ -43,14 +44,15 @@ function Home() {
     }
 
     useEffect(() => {
-        handleNewQuote()
+        const cache = localStorage.getItem('quoteCache') || []
+        setResult(JSON.parse(cache))
     },[])
 
     return (
         <div className='w-full min-h-svh flex flex-col items-center justify-center text-lg'>
             <div className='w-full max-w-[650px]'>
                 <h1 className='font-bold text-4xl tracking-tight'>
-                    ❝ {result !== "" && result.content} ❞
+                    {result !== "" && "❝ " + result.content + " ❞"}
                 </h1>
                 <p className='pt-4'>
                     &mdash; &nbsp;{result !== "" && result.originator.name}
