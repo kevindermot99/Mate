@@ -7,6 +7,15 @@
     src: url('../public/SF-Pro.ttf');
 }
 
+@font-face {
+    font-family: "Cascadia";
+    src: url('../public/CascadiaMono-SemiLight.otf');
+}
+
 *{
     font-family: SF-Pro, sans-serif;
+}
+
+.Cascadia{
+    font-family: 'Cascadia', 'SF-Pro';
 }
