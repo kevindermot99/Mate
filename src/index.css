@@ -3,19 +3,29 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: "SF-Pro";
-    src: url('/SF-Pro.ttf');
+  font-family: "SF-Pro";
+  src: url("/SF-Pro.ttf");
 }
 
 @font-face {
-    font-family: "Cascadia";
-    src: url('/CascadiaMono-SemiLight.otf');
+  font-family: "Cascadia";
+  src: url("/CascadiaMono-SemiLight.otf");
 }
 
-*{
-    font-family: SF-Pro, sans-serif;
+* {
+  font-family: SF-Pro, sans-serif;
 }
 
-.Cascadia{
-    font-family: 'Cascadia', 'SF-Pro';
+.Cascadia {
+  font-family: "Cascadia", "SF-Pro";
 }
+
+.transition-height {
+  overflow: hidden;
+  transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+.opacity-transition {
+  transition: opacity 0.3s ease;
+}
+
