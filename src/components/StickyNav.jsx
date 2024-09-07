@@ -25,20 +25,20 @@ function StickyNav() {
       label: <div className="ant-dropdown-menu-item-divider" />, // Custom divider
     },
     {
-        key: "2",
-        label: (
-          <a
-            href="https://kevinmk.onrender.com"
-            target="_blank"
-            className="text-sm font-medium tracking-tight flex flex-col items-start justify-start w-full gap-0"
-          >
-            <span className="text-xs font-normal text-dark-color/70">
-              Creator
-            </span>
-            Kevin K. Mbonimpaye
-          </a>
-        ),
-      },
+      key: "2",
+      label: (
+        <a
+          href="https://kevinmk.onrender.com"
+          target="_blank"
+          className="text-sm font-medium tracking-tight flex flex-col items-start justify-start w-full gap-0"
+        >
+          <span className="text-xs font-normal text-dark-color/70">
+            Creator
+          </span>
+          Kevin K. Mbonimpaye
+        </a>
+      ),
+    },
     {
       key: "3",
       label: (
@@ -53,6 +53,16 @@ function StickyNav() {
     },
     {
       key: "4",
+      label: (
+        <button
+          className="text-sm font-medium tracking-tight flex items-center justify-start w-full gap-2"
+        >
+            Tools & Tech
+        </button>
+      ),
+    },
+    {
+      key: "5",
       label: (
         <a
           href="https://github.com/kevindermot99/Mate"
@@ -90,15 +100,15 @@ function StickyNav() {
             <Dropdown
               dropdownRender={(menu) => (
                 <div className="min-w-[200px]">
-                <Menu>
-                  {items.map((item) =>
-                    item.key === "divider" ? (
-                      <Menu.Divider key={item.key} />
-                    ) : (
-                      <Menu.Item key={item.key}>{item.label}</Menu.Item>
-                    )
-                  )}
-                </Menu>
+                  <Menu>
+                    {items.map((item) =>
+                      item.key === "divider" ? (
+                        <Menu.Divider key={item.key} />
+                      ) : (
+                        <Menu.Item key={item.key}>{item.label}</Menu.Item>
+                      )
+                    )}
+                  </Menu>
                 </div>
               )}
               trigger={["click"]}
