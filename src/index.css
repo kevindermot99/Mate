@@ -4,12 +4,12 @@
 
 @font-face {
     font-family: "SF-Pro";
-    src: url('../public/SF-Pro.ttf');
+    src: url('/SF-Pro.ttf');
 }
 
 @font-face {
     font-family: "Cascadia";
-    src: url('../public/CascadiaMono-SemiLight.otf');
+    src: url('/CascadiaMono-SemiLight.otf');
 }
 
 *{
