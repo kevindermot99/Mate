@@ -19,6 +19,7 @@ function Home() {
   const [result, setResult] = useState("");
   const [showMore, setShowMore] = useState(false);
   const [animateShowMore, setAnimateShowMore] = useState(false);
+  const [animateFetch, setAnimateFetch] = useState(false)
 
   const welcomeResult = {
     content: "Simplicity is the ultimate sophistication.",
@@ -45,6 +46,7 @@ function Home() {
     };
 
     const getQuote = async () => {
+        
       try {
         // const response = await axios.request(options);
         // console.log(response.data);
