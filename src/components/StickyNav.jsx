@@ -15,14 +15,14 @@ import { Link } from "react-router-dom";
 function StickyNav() {
 
   const items = [
-    // {
-    //   key: "1",
-    //   label: (
-    //     <button className="text-sm font-medium tracking-tight flex items-center justify-start w-full gap-2">
-    //       Saved Quotes
-    //     </button>
-    //   ),
-    // },
+    {
+      key: "1",
+      label: (
+        <Link to={`/`} className="text-sm font-medium tracking-tight flex items-center justify-start w-full gap-2">
+          Generate Random Quotes
+        </Link>
+      ),
+    },
     {
       key: "3",
       label: (
