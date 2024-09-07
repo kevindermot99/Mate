@@ -59,7 +59,7 @@ function Home() {
                 <h1 className='font-bold text-4xl tracking-tight'>
                     {result !== "" && "❝ " + result.content + " ❞"}
                 </h1>
-                <p className='pt-4'>
+                <p className='pt-4 Cascadia'>
                     {result !== "" && "— " + result.originator.name}
                 </p>
                 <div className='flex items-center justify-end gap-4 pt-4'>
