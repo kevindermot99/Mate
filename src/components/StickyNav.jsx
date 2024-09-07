@@ -10,6 +10,7 @@ import {
   LuSun,
   LuX,
 } from "react-icons/lu";
+import { Link } from "react-router-dom";
 
 function StickyNav() {
 
@@ -40,9 +41,9 @@ function StickyNav() {
     {
       key: "4",
       label: (
-        <button className="text-sm font-medium tracking-tight flex items-center justify-start w-full gap-2">
+        <Link to={`/tools_techs`} className="text-sm font-medium tracking-tight flex items-center justify-start w-full gap-2">
           Tools & Tech
-        </button>
+        </Link>
       ),
     },
     {
